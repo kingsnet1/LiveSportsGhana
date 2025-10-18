@@ -1,4 +1,4 @@
-🏆 Live Football Player — HD Sports Stream Interface
+🏆 Live Sports Ghana — HD Sports Stream Interface
 
 A sleek, responsive HTML5 web player interface for streaming live football matches from multiple sources.
 Built with pure HTML, CSS, and JavaScript — no frameworks required. Optimized for mobile, tablet, and desktop users with a smooth and professional viewing experience.
