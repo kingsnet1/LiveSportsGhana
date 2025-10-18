@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Live Sports Ghana | SportzOnline</title>
+  <style>
+    /* ===== Base Styling ===== */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #0b0b0b;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      width: 100%;
+      background: #121212;
+      padding: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: #f9f9f9;
+      letter-spacing: 0.5px;
+    }
+
+    /* ===== Channel Buttons ===== */
+    .channel-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 20px auto;
+      max-width: 1000px;
+      padding: 0 10px;
+    }
+
+    .channel-btn {
+      position: relative;
+      background: linear-gradient(145deg, #1e1e1e, #252525);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      padding: 14px 22px;
+      font-size: 1rem;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      flex: 1 1 140px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .channel-btn:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(145deg, #ffb300, #ff8800);
+      color: #111;
+      box-shadow: 0 6px 25px rgba(255,136,0,0.3);
+    }
+
+    /* ===== Active Button + LIVE Badge ===== */
+    .channel-btn.active {
+      background: linear-gradient(145deg, #ffb300, #ff8800);
+      color: #111;
+      font-weight: 600;
+      transform: translateY(-3px);
+      box-shadow: 0 0 20px 5px rgba(255, 0, 0, 0.3);
+    }
+
+    .channel-btn.active::after {
+      content: "LIVE 🔴";
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #ff0000;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 6px;
+      border-radius: 5px;
+      animation: pulse 1.3s infinite;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+    }
+
+    /* ===== Pulse Animation ===== */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+        box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+        box-shadow: 0 0 16px rgba(255, 0, 0, 0.8);
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+        box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+      }
+    }
+
+    /* ===== Player Section ===== */
+    .player-wrapper {
+      position: relative;
+      width: 100vh;
+      max-width: 1600px;
+      aspect-ratio: 16 / 9;
+      margin: 20px auto 40px;
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 12px;
+    }
+
+    .loading {
+      text-align: center;
+      color: #ffb300;
+      padding: 25px;
+      font-size: 1.2rem;
+      font-style: italic;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+      color: #aaa;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      width: 100%;
+      background: #111;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.3rem;
+      }
+      .channel-btn {
+        font-size: 0.95rem;
+        padding: 10px 14px;
+      }
+      .player-wrapper {
+        width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>⚽ Live Sports Ghana</h1>
+  </header>
+
+  <div class="channel-buttons">
+    <button class="channel-btn active" data-src="https://sportzonline.st/channels/hd/hd10.php">Channel 1</button>
+    <button class="channel-btn" data-src="https://sportzonline.st/channels/hd/hd9.php">Channel 2</button>
+    <button class="channel-btn" data-src="https://sportzonline.st/channels/hd/hd8.php">Channel 3</button>
+    <button class="channel-btn" data-src="https://sportzonline.st/channels/hd/hd7.php">Channel 4</button>
+    <button class="channel-btn" data-src="https://sportzonline.st/channels/hd/hd6.php">Channel 5</button>
+    <button class="channel-btn" data-src="https://sportzonline.st/channels/hd/hd5.php">Channel 6</button>
+    <button class="channel-btn" data-src="https://sportzonline.st/channels/hd/hd4.php">Channel 7</button>
+    <button class="channel-btn" data-src="https://sportzonline.st/channels/hd/hd3.php">Channel 8</button>
+    <button class="channel-btn" data-src="https://sportzonline.st/channels/hd/hd2.php">Channel 9</button>
+    <button class="channel-btn" data-src="https://sportzonline.st/channels/hd/hd1.php">Channel 10</button>
+    <button class="channel-btn" data-src="https://sportzonline.st/channels/hd/hd11.php">Channel 11</button>
+    <button class="channel-btn" data-src="https://sportzonline.st/channels/hd/hd5.php">Channel 12</button>
+  </div>
+
+  <div id="player-section">
+    <div class="player-wrapper" id="playerWrapper">
+      <iframe
+        id="livePlayer"
+        src="https://sportzonline.st/channels/hd/hd10.php"
+        title="Live Stream"
+        allowfullscreen
+        allow="autoplay; fullscreen; encrypted-media"
+        loading="lazy"
+        referrerpolicy="no-referrer"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+      ></iframe>
+    </div>
+  </div>
+
+  <footer>
+    © <span id="year"></span> Live Sports Ghana. All Rights Reserved | Powered By KingsNet Web Solutions.
+  </footer>
+
+  <script>
+    const buttons = document.querySelectorAll(".channel-btn");
+    const wrapper = document.getElementById("playerWrapper");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        // Remove active class from all buttons
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        // Change stream source
+        const newSrc = btn.getAttribute("data-src");
+
+        // Show temporary loading
+        wrapper.innerHTML = `<div class="loading">Loading stream... please wait ⚽</div>`;
+
+        setTimeout(() => {
+          wrapper.innerHTML = `
+            <iframe
+              id="livePlayer"
+              src="${newSrc}"
+              title="Live Stream"
+              allowfullscreen
+              allow="autoplay; fullscreen; encrypted-media"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            ></iframe>
+          `;
+        }, 700);
+      });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
