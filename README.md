@@ -29,7 +29,7 @@ Vanilla JavaScript
 
 🌍 Live Demo
 
-👉 https://yourusername.github.io/live-football-player
+👉 https://github.com/kingsnet1/LiveSportsGhana
 
 📜 License
 
